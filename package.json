@@ -1,0 +1,32 @@
+{
+  "name": "hollow-horror",
+  "displayName": "HOLLOW",
+  "version": "1.0.0",
+  "description": "A pixelated black-and-white psychological horror point-and-click adventure for Android (HTML5 Canvas + Cordova).",
+  "license": "MIT",
+  "main": "www/index.html",
+  "scripts": {
+    "serve": "python3 -m http.server 8080 --directory www",
+    "prepare:android": "cordova platform add android",
+    "build:android": "cordova build android",
+    "build:apk": "cordova build android --release -- --packageType=apk"
+  },
+  "keywords": [
+    "horror",
+    "point-and-click",
+    "cordova",
+    "android",
+    "html5",
+    "canvas",
+    "game"
+  ],
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "cordova": "^12.0.0",
+    "cordova-android": "^13.0.0"
+  }
+}

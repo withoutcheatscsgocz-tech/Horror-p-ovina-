@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.hollow.horror" version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HOLLOW</name>
+    <description>A pixelated black-and-white psychological horror point-and-click adventure.</description>
+    <author email="withoutcheatscsgocz@gmail.com">HOLLOW</author>
+
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <!-- Fullscreen, portrait, dark, no system distractions -->
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="BackgroundColor" value="0xff000000" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="SplashScreenDelay" value="1500" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="24" />
+    <preference name="android-targetSdkVersion" value="34" />
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="AndroidWindowSplashScreenBackgroundColor" value="#000000" />
+    </platform>
+</widget>
