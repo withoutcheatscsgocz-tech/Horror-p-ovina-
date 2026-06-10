@@ -68,7 +68,25 @@ it on your device (enable *Install unknown apps*).
 
 You can also trigger it manually via **Actions → Build Android APK → Run workflow**.
 
-### Option B — build locally
+### Option B — Gradle-free native build (recommended, ~34 KB APK)
+Wraps the game in a minimal native WebView activity (`android-native/`) with
+**no AppCompat / AGP / Gradle** — it uses only the raw Android toolchain
+(`aapt2` → `javac` → `d8` → `zipalign` → `apksigner`). This avoids a known
+AGP in-process `aaptcompiler` failure that occurs in some sandboxed build
+environments, and produces a tiny self-contained APK.
+
+```bash
+# one-time SDK setup
+sdkmanager "platform-tools" "platforms;android-34" "build-tools;35.0.0"
+export ANDROID_SDK_ROOT=/path/to/android-sdk
+
+./build-apk.sh
+# → build/HOLLOW-debug.apk   (signed debug APK, installable on Android 7.0+)
+```
+
+The launcher icon is generated procedurally with pure JDK (`android-native/tools/IconGen.java`).
+
+### Option C — Cordova build
 Requires Node.js, a JDK (17), and the Android SDK.
 
 ```bash
@@ -76,13 +94,6 @@ npm install -g cordova@12
 cordova platform add android        # npm run prepare:android
 cordova build android               # npm run build:android
 # → debug APK at: platforms/android/app/build/outputs/apk/debug/app-debug.apk
-```
-
-For a signed release build:
-
-```bash
-cordova build android --release -- --packageType=apk
-# then zipalign + apksign with your keystore
 ```
 
 ---
